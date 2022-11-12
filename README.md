@@ -1,6 +1,6 @@
-# Online shopping site prototype. (Built using ASP.NET MVC)
+# Online shopping site prototype. (Built using C# ASP.NET MVC)
 
-This is my work in progress .NET project that I have been working on with respect to my ongoing certification course. 
+This is my work in progress C#.NET project that I have been working on with respect to my ongoing certification course. 
 
 ## What this project actually is?
 
