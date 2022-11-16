@@ -26,7 +26,7 @@ namespace EFDBFirstApproach.Controllers
             if(ModelState.IsValid)
             {
                 //Registering a user
-
+                //Signin here
                 var appDbContext = new ApplicationDbContext();
                 var userStore = new ApplicationUserStore(appDbContext);
                 var userManager = new ApplicationUserManager(userStore);
