@@ -37,7 +37,7 @@ Some of the building blocks and functionalities included in this project are:
  ```
  
  ```sh
- install-package Microsoft.jQuery.unobtrusive.Validation
+ install-package Microsoft.jQuery.Unobtrusive.Validation
  ```
  
  ```sh
