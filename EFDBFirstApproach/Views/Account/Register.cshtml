@@ -1,4 +1,4 @@
-﻿@model EFDBFirstApproach.View_Models.RegisterVIewModel
+﻿@model EFDBFirstApproach.ViewModels.RegisterVIewModel
 @{
     ViewBag.Title = "Register";
     Layout = "~/Views/Shared/_LayoutPage1.cshtml";
@@ -16,12 +16,12 @@
     </div>
     <div class="form-group col-md-6">
         @Html.LabelFor(temp => temp.Password)
-        @Html.TextBoxFor(temp => temp.Password, new { @class = "form-control", placeholder = "Password" })
+        @Html.PasswordFor(temp => temp.Password, new { @class = "form-control", placeholder = "Password" })
         @Html.ValidationMessageFor(temp => temp.Password)
     </div>
     <div class="form-group col-md-6">
         @Html.LabelFor(temp => temp.ConfirmPassword)
-        @Html.TextBoxFor(temp => temp.ConfirmPassword, new { @class = "form-control", placeholder = "Confirm Password" })
+        @Html.PasswordFor(temp => temp.ConfirmPassword, new { @class = "form-control", placeholder = "Confirm Password" })
         @Html.ValidationMessageFor(temp => temp.ConfirmPassword)
     </div>
     <div class="form-group col-md-6">

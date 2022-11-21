@@ -27,7 +27,16 @@
                 <li class="nav-item"><a class="nav-link" href="/Categories/index">Categories</a></li>
                 <li class="nav-item"><a class="nav-link" href="/Brands/index">Brands</a></li>
                 <li class="nav-item"><a class="nav-link" href="/products/index">Products</a></li>
-                <li class="nav-item"><a class="nav-link" href="/account/register">Register</a></li>
+                @if (User.Identity.IsAuthenticated == false)
+                {
+                    <li class="nav-item"><a class="nav-link" href="/account/register">Register</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/account/login">Login</a></li>
+                }
+                else
+                {
+                    <li class="nav-item"><a class="nav-link" href="/account/myprofile">My Profile</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/account/logout">Logout</a></li>
+                }
             </ul>
         </div>
         @if(User.Identity.IsAuthenticated == true)

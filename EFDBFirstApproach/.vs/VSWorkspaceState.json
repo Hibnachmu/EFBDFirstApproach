@@ -1,7 +1,8 @@
 {
   "ExpandedNodes": [
     "",
-    "\\Controllers"
+    "\\Controllers",
+    "\\ViewModels"
   ],
   "SelectedNode": "\\Controllers\\AccountController.cs",
   "PreviewInSolutionExplorer": false

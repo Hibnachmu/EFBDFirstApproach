@@ -4,11 +4,11 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using EFDBFirstApproach.Models;
-using EFDBFirstApproach.View_Models;
 using EFDBFirstApproach.Identity;
 using System.Web.Helpers;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
+using EFDBFirstApproach.ViewModels;
 
 namespace EFDBFirstApproach.Controllers
 {
@@ -35,7 +35,7 @@ namespace EFDBFirstApproach.Controllers
                 {
                     Email = rvm.Email,
                     UserName = rvm.UserName,
-                    PasswordHash = rvm.Password,
+                    PasswordHash = passwordHash,
                     City = rvm.City,
                     Birthday = rvm.DateOfBirth,
                     Address = rvm.Address,
@@ -60,6 +60,51 @@ namespace EFDBFirstApproach.Controllers
                 ModelState.AddModelError("My Error", "Invalid data");
                 return View();
             }
+        }
+
+        public ActionResult Login()
+        {
+            return View();
+        }
+        
+        [HttpPost]
+        public ActionResult Login(LoginViewModel lvm)
+        {
+            //login
+            var applDBContext = new ApplicationDbContext();
+            var userStore = new ApplicationUserStore(applDBContext);
+            var userManager = new ApplicationUserManager(userStore);
+
+            var user = userManager.Find(lvm.Username, lvm.Password);
+
+            if(user!=null)
+            {
+                var authenticationManager = HttpContext.GetOwinContext().Authentication;
+                var userIdentity = userManager.CreateIdentity(user, DefaultAuthenticationTypes.ApplicationCookie);
+                authenticationManager.SignIn(new AuthenticationProperties(), userIdentity);
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                ModelState.AddModelError("myerror", "Invalid username or password");
+                return View();
+            }
+        }
+        
+        public ActionResult Logout()
+        {
+            var authenticationManager = HttpContext.GetOwinContext().Authentication;
+            authenticationManager.SignOut();
+            return RedirectToAction("Index", "Home");
+        }
+
+        public ActionResult MyProfile()
+        {
+            var applDBContext = new ApplicationDbContext();
+            var userStore = new ApplicationUserStore(applDBContext);
+            var userManager = new ApplicationUserManager(userStore);
+            ApplicationUser appuser = userManager.FindById(User.Identity.GetUserId());
+            return View(appuser);
         }
     }
 }
