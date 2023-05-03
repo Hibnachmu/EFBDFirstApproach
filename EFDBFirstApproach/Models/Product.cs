@@ -17,6 +17,7 @@ namespace EFDBFirstApproach.Models
         public string ProductName { get; set; }
 
         [Display(Name = "Price")]
+        [Range(0,100000, ErrorMessage ="Prices should be inbetween 0 and 100000")]
         [Required (ErrorMessage ="Price cannot be blank")]
         public Nullable<decimal> Price { get; set; }
 
@@ -28,14 +29,14 @@ namespace EFDBFirstApproach.Models
 
         [Display(Name = "Category ID")]
         [Required]
-        public Nullable<long> CategoryID { get; set; }
+        public long CategoryID { get; set; }
 
         [Display(Name = "Brand ID")]
         [Required]
-        public Nullable<long> BrandID { get; set; }
+        public long BrandID { get; set; }
 
         [Display(Name = "Active")]
-        public Nullable<bool> Active { get; set; }
+        public bool Active { get; set; }
         public string Photo { get; set; }
 
 

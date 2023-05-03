@@ -2,7 +2,7 @@
 
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+    Layout = "~/Areas/Admin/Views/Shared/AdminLayoutPage1.cshtml";
 }
 
 <h2>Brands</h2>
@@ -12,8 +12,8 @@
         <th>Brand ID</th>
         <th>Brand Name</th>
     </tr>
-    @foreach(var item in Model)
-            {
+    @foreach (var item in Model)
+    {
                 <tr>
                     <td>@item.BrandID</td>
                     <td>@item.BrandName</td>

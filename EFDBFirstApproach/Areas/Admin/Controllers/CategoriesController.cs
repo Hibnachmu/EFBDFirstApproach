@@ -5,11 +5,11 @@ using System.Web;
 using System.Web.Mvc;
 using EFDBFirstApproach.Models;
 
-namespace EFDBFirstApproach.Controllers
+namespace EFDBFirstApproach.Areas.Admin.Controllers
 {
     public class CategoriesController : Controller
     {
-        // GET: Categories
+        // GET: Admin/Categories
         public ActionResult Index()
         {
             EFCFADbContext db = new EFCFADbContext();

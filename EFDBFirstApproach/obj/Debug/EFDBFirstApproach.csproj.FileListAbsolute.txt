@@ -194,3 +194,4 @@ D:\Udemy\EFBDFirstApproachg\EFDBFirstApproach\obj\Debug\EFDBFirstApproach.Migrat
 D:\Udemy\EFBDFirstApproachg\EFDBFirstApproach\obj\Debug\EFDBFirstApproach.csproj.GenerateResource.cache
 D:\Udemy\EFBDFirstApproachg\EFDBFirstApproach\obj\Debug\EFDBFirstApproach.csproj.CoreCompileInputs.cache
 D:\Udemy\EFBDFirstApproachg\EFDBFirstApproach\obj\Debug\EFDBFirstApproach.csproj.CopyComplete
+D:\Udemy\EFBDFirstApproachg\EFDBFirstApproach\obj\Debug\EFDBFirstApproach.Migrations.RemovingNullColumns.resources

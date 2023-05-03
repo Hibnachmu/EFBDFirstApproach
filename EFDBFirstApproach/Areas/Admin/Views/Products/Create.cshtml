@@ -1,36 +1,44 @@
 ﻿@model EFDBFirstApproach.Models.Product
 @{
     ViewBag.Title = "Create";
-    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+    Layout = "~/Areas/Admin/Views/Shared/AdminLayoutPage1.cshtml";
 }
 
 <h2>Create</h2>
 
-@using (Html.BeginForm("Create", "Products", FormMethod.Post, new { enctype = "multipart/form-data" }))
+@using (Html.BeginForm("Create", "Products", new { area = "Admin" }, FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     <div class="row g-3">
         <div class="form-group col-md-6">
             @Html.LabelFor(temp => temp.ProductName)
-            @Html.TextBoxFor(temp => temp.ProductName, new {@class = "form-control",placeholder ="Product Name"}) 
+            @Html.TextBoxFor(temp => temp.ProductName, new { @class = "form-control", placeholder = "Product Name" }) 
             @Html.ValidationMessageFor(temp => temp.ProductName)
         </div>
         <div class="form-group col-md-6">
             @Html.LabelFor(temp => temp.Price)
-            @Html.TextBoxFor(temp => temp.Price, new {@class = "form-control", placeholder = "Price" })
+            @Html.TextBoxFor(temp => temp.Price, new { @class = "form-control", placeholder = "Price" })
             @Html.ValidationMessageFor(temp => temp.Price) 
         </div>
     </div>
     <div class="row g-3">
+        @{
+            string dop = "";
+        }
         <div class="form-group col-md-6">
             @Html.LabelFor(temp => temp.DateOfPurchase)
-            @Html.TextBoxFor(temp => temp.DateOfPurchase, new { @class = "form-control", placeholder = "Date of Purchase" })
+            <input type="date" class="form-control" id="ProductName" name="DateOfPurchase" placeholder="Date of Purchase" value="@dop" />
             @Html.ValidationMessageFor(temp => temp.DateOfPurchase)
         </div>
         <div class="form-group col-md-6">
-            @Html.LabelFor(temp => temp.AvailabilityStatus)
-            @Html.DropDownListFor(temp => temp.AvailabilityStatus,new List<SelectListItem>(){
-                new SelectListItem(){Text = "In Stock", Value = "InStock" },
-                new SelectListItem(){Text= "Out Of Stock", Value = "OutOfStock"}},"Please Select", new { @class = "form-control"}) 
+            @Html.LabelFor(temp => temp.AvailabilityStatus, new { @class = "form-check-label" })
+            <div class="form-check">
+                @Html.RadioButtonFor(temp => temp.AvailabilityStatus, "InStock", new { @class = "form-check-input", id = "InStock" })
+                <label class="form-check-label" for="InStock">In Stock</label>
+            </div>
+            <div class="form-check">
+                @Html.RadioButtonFor(temp => temp.AvailabilityStatus, "OutOfStock", new { @class = "form-check-input", id = "OutOfStock" })
+                <label class="form-check-label" for="OutOfStock">OutOfStock</label>
+            </div>
             @Html.ValidationMessageFor(temp => temp.AvailabilityStatus)
         </div>
     </div>
@@ -51,7 +59,7 @@
         </div>
         <div class="form-group">
             <div class="form-check">
-                @Html.CheckBoxFor(temp => temp.Active.Value , new {@class = "form-check-input", value ="true" })
+                @Html.CheckBoxFor(temp => temp.Active , new {@class = "form-check-input", value ="true" })
                 @Html.LabelFor(temp => temp.Active, new {@class = "form-check-label" })
             </div>
         </div>
@@ -60,5 +68,5 @@
     @Html.ValidationSummary()
 
     <button type="submit" class="btn btn-success">Create</button>
-    <a class="btn btn-danger" href="/products/index">Cancel</a>
+    <a class="btn btn-danger" href="/admin/products/index">Cancel</a>
 }
